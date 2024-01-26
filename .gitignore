@@ -1,9 +1,11 @@
-*.iml
-.gradle
+# Gradle
+/.gradle/
+# Android SDK
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
-/build
-/captures
-.externalNativeBuild
+# IntelliJ
+/.idea/
+# Gradle Build
+/app/build/
+# Android Studio Signing APK
+/app/debug/
+/app/release/
