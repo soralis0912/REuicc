@@ -1,7 +1,8 @@
 package org.soralis_0912.reuicc_fix;
+
 import org.soralis_0912.reuicc_fix.hooker1;
-        import org.soralis_0912.reuicc_fix.hooker2;
-                import org.soralis_0912.reuicc_fix.hooker3;
+import org.soralis_0912.reuicc_fix.hooker2;
+import org.soralis_0912.reuicc_fix.hooker3;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
