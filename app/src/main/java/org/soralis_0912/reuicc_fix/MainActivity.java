@@ -1,4 +1,4 @@
-package com.ani_nya.reuicc_fix;
+package org.soralis_0912.reuicc_fix;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

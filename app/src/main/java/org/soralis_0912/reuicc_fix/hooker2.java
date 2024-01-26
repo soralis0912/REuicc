@@ -1,4 +1,4 @@
-package com.ani_nya.reuicc_fix;
+package org.soralis_0912.reuicc_fix;
 
 import android.os.Build;
 import java.util.Collections;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ani_nya.reuicc_fix">
+    package="org.soralis_0912.reuicc_fix">
 
     <application
         android:allowBackup="true"
