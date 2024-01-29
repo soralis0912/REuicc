@@ -53,5 +53,11 @@ android {
 
 dependencies {
     compileOnly 'de.robv.android.xposed:api:82'
-    //compileOnly 'de.robv.android.xposed:api:82:sources'
+
+    //Shizuku
+    val shizukuVersion = "13.1.5"
+    compileOnly("dev.rikka.hidden:stub:4.3.2")
+    implementation("dev.rikka.tools.refine:runtime:4.4.0")
+    implementation("dev.rikka.shizuku:api:${shizukuVersion}")
+    implementation("dev.rikka.shizuku:provider:${shizukuVersion}")
 }
