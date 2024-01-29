@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.topjohnwu.superuser.Shell;
+
 public class Activity extends android.app.Activity {
 
     private static final String EuiccGoogle = "com.google.android.euicc";
@@ -24,9 +26,11 @@ public class Activity extends android.app.Activity {
 
         findViewById(R.id.EsimIntro).setOnClickListener(view -> {
             try {
-                Intent intent = new Intent();
-                intent.setClassName(EuiccGoogle, EsimIntro);
-                startActivity(intent);
+                Shell.getShell(shell -> {
+                    Intent intent = new Intent();
+                    intent.setClassName(EuiccGoogle, EsimIntro);
+                    startActivity(intent);
+                });
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(this, "アクティビティの起動に失敗しました", Toast.LENGTH_SHORT).show();
@@ -36,9 +40,11 @@ public class Activity extends android.app.Activity {
         // EuiccSettings
         findViewById(R.id.EuiccSettings).setOnClickListener(view -> {
             try {
-                Intent intent = new Intent();
-                intent.setClassName(EuiccGoogle, EuiccSettings);
-                startActivity(intent);
+                Shell.getShell(shell -> {
+                    Intent intent = new Intent();
+                    intent.setClassName(EuiccGoogle, EuiccSettings);
+                    startActivity(intent);
+                });
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(this, "アクティビティの起動に失敗しました", Toast.LENGTH_SHORT).show();
@@ -48,9 +54,11 @@ public class Activity extends android.app.Activity {
         // ProfileListを起動
         findViewById(R.id.ProfileList).setOnClickListener(view -> {
             try {
-                Intent intent = new Intent();
-                intent.setClassName(EuiccGoogle, CurrentProfile);
-                startActivity(intent);
+                Shell.getShell(shell -> {
+                    Intent intent = new Intent();
+                    intent.setClassName(EuiccGoogle, CurrentProfile);
+                    startActivity(intent);
+                });
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(this, "アクティビティの起動に失敗しました", Toast.LENGTH_SHORT).show();
