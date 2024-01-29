@@ -9,6 +9,7 @@ public class Activity extends android.app.Activity {
     private static final String EuiccUI = "com.android.euicc.ui";
     private static final String EsimIntro = EuiccUI + ".dsds.EsimIntroActivity";
     private static final String EuiccSettings = EuiccUI + ".settings.EuiccSettingsActivity";
+    private static final String CurrentProfile = EuiccUI + ".settings.CurrentProfileListActivity";
 
     @Override
     public void onBackPressed() {
@@ -24,6 +25,7 @@ public class Activity extends android.app.Activity {
         findViewById(R.id.EsimIntro).setOnClickListener(view -> startActivity(new Intent().setClassName(EuiccGoogle, EsimIntro)));
         // EuiccSettings
         findViewById(R.id.EuiccSettings).setOnClickListener(view -> startActivity(new Intent().setClassName(EuiccGoogle, EuiccSettings)));
-
+        // EuiccSettings
+        findViewById(R.id.ProfileList).setOnClickListener(view -> startActivity(new Intent().setClassName(EuiccGoogle, CurrentProfile)));
     }
 }
