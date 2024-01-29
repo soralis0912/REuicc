@@ -1,12 +1,15 @@
 package org.soralis_0912.reuicc_fix;
 
+import android.widget.Toast;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import rikka.shizuku.Shizuku;
 import rikka.shizuku.ShizukuBinderWrapper;
-import rikka.shizuku.ShizukuSystemProperties;
+import rikka.shizuku.server.ShizukuService;
 import rikka.sui.Sui;
+import rikka.shizuku.ShizukuApiConstants;
+
 
 
 public class Activity extends android.app.Activity {
@@ -39,14 +42,44 @@ public class Activity extends android.app.Activity {
         suiAlive =  checkPermission(9000);
         isRoot = Shizuku.getUid() == 0;
         if(suiAlive && isRoot){
+            ShizukuBinderWrapper wrapper = ShizukuService.getBinder();
             // EsimIntro
-            findViewById(R.id.EsimIntro).setOnClickListener(view -> startActivity(new Intent().setClassName(EuiccGoogle, EsimIntro)));
+            findViewById(R.id.EsimIntro).setOnClickListener(view -> {
+                try {
+                    Intent intent = new Intent();
+                    intent.setClassName(EuiccGoogle, EsimIntro);
+                    ShizukuService.transactRemote(wrapper, ShizukuApiConstants.REQUEST_CODE_AUTHENTICATE, null, null);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(this, "アクティビティの起動に失敗しました", Toast.LENGTH_SHORT).show();
+                }
+            });
             // EuiccSettings
-            findViewById(R.id.EuiccSettings).setOnClickListener(view -> startActivity(new Intent().setClassName(EuiccGoogle, EuiccSettings)));
-            // EuiccSettings
-            findViewById(R.id.ProfileList).setOnClickListener(view -> startActivity(new Intent().setClassName(EuiccGoogle, CurrentProfile)));
-        }
-        else{
+            findViewById(R.id.EuiccSettings).setOnClickListener(view -> {
+                try {
+                    Intent intent = new Intent();
+                    intent.setClassName(EuiccGoogle, EuiccSettings);
+                    ShizukuService.transactRemote(wrapper, ShizukuApiConstants.REQUEST_CODE_AUTHENTICATE, null, null);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(this, "アクティビティの起動に失敗しました", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            // ProfileListを起動
+            findViewById(R.id.ProfileList).setOnClickListener(view -> {
+                try {
+                    Intent intent = new Intent();
+                    intent.setClassName(EuiccGoogle, CurrentProfile);
+                    ShizukuService.transactRemote(wrapper, ShizukuApiConstants.REQUEST_CODE_AUTHENTICATE, null, null);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(this, "アクティビティの起動に失敗しました", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
