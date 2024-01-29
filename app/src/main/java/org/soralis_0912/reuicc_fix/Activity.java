@@ -2,6 +2,7 @@ package org.soralis_0912.reuicc_fix;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class Activity extends android.app.Activity {
 
@@ -21,11 +22,40 @@ public class Activity extends android.app.Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        // EsimIntro
-        findViewById(R.id.EsimIntro).setOnClickListener(view -> startActivity(new Intent().setClassName(EuiccGoogle, EsimIntro)));
+        findViewById(R.id.EsimIntro).setOnClickListener(view -> {
+            try {
+                Intent intent = new Intent();
+                intent.setClassName(EuiccGoogle, EsimIntro);
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(this, "アクティビティの起動に失敗しました", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         // EuiccSettings
-        findViewById(R.id.EuiccSettings).setOnClickListener(view -> startActivity(new Intent().setClassName(EuiccGoogle, EuiccSettings)));
-        // EuiccSettings
-        findViewById(R.id.ProfileList).setOnClickListener(view -> startActivity(new Intent().setClassName(EuiccGoogle, CurrentProfile)));
+        findViewById(R.id.EuiccSettings).setOnClickListener(view -> {
+            try {
+                Intent intent = new Intent();
+                intent.setClassName(EuiccGoogle, EuiccSettings);
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(this, "アクティビティの起動に失敗しました", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // ProfileListを起動
+        findViewById(R.id.ProfileList).setOnClickListener(view -> {
+            try {
+                Intent intent = new Intent();
+                intent.setClassName(EuiccGoogle, CurrentProfile);
+                startActivity(intent);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(this, "アクティビティの起動に失敗しました", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
